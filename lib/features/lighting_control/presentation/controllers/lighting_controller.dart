@@ -11,14 +11,19 @@ class LightingController with ChangeNotifier {
 
   void updateLightLevel(int index, int level) {
     if (!rooms[index].isOutOfOrder) {
-      rooms[index] = Room(
-        name: rooms[index].name,
-        lightLevel: level,
-        isOutOfOrder: rooms[index].isOutOfOrder,
-      );
+      rooms[index] = rooms[index].copyWith(lightLevel: level);
       notifyListeners();
     }
   }
+
+  void toggleOutOfOrder(int index, bool isOutOfOrder) {
+    rooms[index] = rooms[index].copyWith(
+      isOutOfOrder: isOutOfOrder,
+      lightLevel: isOutOfOrder ? 0 : rooms[index].lightLevel, // Mettre à zéro si "Out of order"
+    );
+    notifyListeners(); // Notifie la Home Page pour mettre à jour l'affichage
+  }
+
 
   void turnOnAllLights() {
     for (int i = 0; i < rooms.length; i++) {

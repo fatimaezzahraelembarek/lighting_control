@@ -54,8 +54,12 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
-  # The following line ensures that the Material Icons font is
+  assets:
+      - assets/images/light_off_purple.png
+      - assets/images/light_on_purple.png
+      - assets/images/settings_purple.png
+      - assets/images/warning_purple.png
+    # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
